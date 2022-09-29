@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  user: ansible
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: run image in docker
+      docker_image:
+        name: ubuntu
+        state: present
+
+    - name: create a container using image
+      docker_container:
+        name: cont1
+        image: ubuntu
